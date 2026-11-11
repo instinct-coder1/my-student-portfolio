@@ -77,6 +77,41 @@ contactForm.addEventListener("submit", (event) => {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) return showError(email, "Please enter a valid email address.");
   if (!message.value.trim()) return showError(message, "Please write a message.");
 
-  feedback.textContent = "Your details look valid. This demo does not send messages because no backend or email service is connected.";
-  contactForm.reset();
+  const subject = encodeURIComponent("Portfolio enquiry from " + name.value.trim());
+  const bodyText = encodeURIComponent("Name: " + name.value.trim() + "\nEmail: " + email.value.trim() + "\n\nMessage:\n" + message.value.trim());
+  window.location.href = "mailto:bstmzk@proton.me?subject=" + subject + "&body=" + bodyText;
+  feedback.textContent = "Your email app should open with the message prepared. Review it and press Send.";
 });
+
+// Reading progress and back-to-top control
+const progressBar = document.getElementById("scrollProgress");
+const backToTop = document.getElementById("backToTop");
+function updateScrollUI() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  if (progressBar) progressBar.style.width = progress + "%";
+  if (backToTop) backToTop.classList.toggle("visible", window.scrollY > 500);
+}
+window.addEventListener("scroll", updateScrollUI, { passive: true });
+updateScrollUI();
+if (backToTop) backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+// Project category filters
+const filterButtons = [...document.querySelectorAll(".filter-chip")];
+const projectCards = [...document.querySelectorAll(".project-card[data-category]")];
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+    filterButtons.forEach((item) => {
+      const selected = item === button;
+      item.classList.toggle("active", selected);
+      item.setAttribute("aria-pressed", String(selected));
+    });
+    projectCards.forEach((card) => {
+      const categories = (card.dataset.category || "").split(" ");
+      const show = filter === "all" || categories.includes(filter);
+      card.hidden = !show;
+    });
+  });
+});
+filterButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.classList.contains("active"))));
