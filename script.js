@@ -115,3 +115,33 @@ filterButtons.forEach((button) => {
   });
 });
 filterButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.classList.contains("active"))));
+
+
+// Rotating role text: a small motion detail that keeps the hero lively.
+const roleRotator = document.getElementById("roleRotator");
+if (roleRotator && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const roles = ["Aspiring Developer", "AI/ML Enthusiast", "Python Learner", "Web Developer"];
+  let roleIndex = 0;
+  window.setInterval(() => {
+    roleIndex = (roleIndex + 1) % roles.length;
+    roleRotator.classList.add("role-changing");
+    roleRotator.textContent = roles[roleIndex];
+    roleRotator.classList.remove("role-changing");
+  }, 2600);
+}
+
+// Reveal cards as they enter the viewport; keep content visible without IntersectionObserver.
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const revealTargets = document.querySelectorAll(".section-heading, .about-content, .timeline-item, .skill-card, .project-card, .interest-content, .achievement-panel, .contact-form");
+  revealTargets.forEach((element) => element.classList.add("reveal-item"));
+  document.body.classList.add("reveal-ready");
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealTargets.forEach((element) => revealObserver.observe(element));
+}

@@ -46,3 +46,20 @@ body.light-theme .contact-form input,body.light-theme .contact-form textarea{bac
 @media(max-width:1000px){.nav-links{padding:7px 9px;gap:10px}.nav-link{font-size:10px}}
 @media(max-width:760px){.nav-links{padding:18px 24px 22px;background:rgba(13,19,36,.92);border:0;border-bottom:1px solid var(--glass-border);border-radius:0 0 18px 18px;backdrop-filter:blur(24px)}body.light-theme .nav-links{background:rgba(247,249,253,.96)}.hero{min-height:auto}.learning-strip{align-items:flex-start;flex-wrap:wrap}.learning-strip a{margin-left:59px}.back-to-top{right:15px;bottom:15px}}
 @media(prefers-reduced-motion:reduce){.profile-card,.skill-card,.project-card,.timeline-card,.achievement-panel,.back-to-top{transition:none}}
+
+
+/* Premium interaction layer */
+.hero-quick-links{display:flex;align-items:center;gap:12px;margin-top:20px;color:var(--muted);font-size:12px}
+.hero-quick-links a{color:var(--accent-2);font-weight:700;transition:color .2s,transform .2s}
+.hero-quick-links a:hover{color:var(--text);transform:translateY(-2px)}
+.role-rotator{color:var(--text);display:inline-block;min-width:190px}
+.profile-tech{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}
+.profile-tech span{padding:5px 9px;border:1px solid rgba(193,209,245,.16);border-radius:8px;background:rgba(255,255,255,.045);font:600 9px "DM Sans",sans-serif;color:var(--muted);letter-spacing:.4px}
+.skill-card p{line-height:1.8}
+.skill-card .skill-level{display:inline-flex;align-items:center;gap:6px}
+.skill-card .skill-level:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 9px var(--accent-2)}
+.reveal-ready .reveal-item{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
+.reveal-ready .reveal-item.is-visible{opacity:1;transform:translateY(0)}
+.project-card[hidden]{display:none!important}
+@media(max-width:760px){.role-rotator{min-width:0}.hero-quick-links{margin-top:16px}.profile-tech{justify-content:center}}
+@media(prefers-reduced-motion:reduce){.reveal-ready .reveal-item{opacity:1;transform:none;transition:none}}
