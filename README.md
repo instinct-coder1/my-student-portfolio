@@ -9,6 +9,8 @@ A responsive student portfolio for presenting my education, learning areas, proj
 - Google Fonts: DM Sans and Space Grotesk
 
 ## Features
+
+The portfolio is a lightweight static website. It does not need a backend, paid service or package installation.
 1. Glass-style sticky navigation with active section tracking
 2. Responsive hero section and profile card
 3. About and education timeline
@@ -21,6 +23,9 @@ A responsive student portfolio for presenting my education, learning areas, proj
 10. Responsive mobile navigation
 11. Accessible focus states and reduced-motion support
 12. Contact form validation that prepares an email to bstmzk@proton.me
+13. Rotating hero role text
+14. Scroll-triggered reveal effects with reduced-motion support
+15. Expanded skill groups covering frontend, programming, AI/ML and developer tools
 
 ## Run locally
 1. Clone or download this repository.
