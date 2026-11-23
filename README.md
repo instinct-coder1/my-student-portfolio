@@ -1,16 +1,23 @@
-# Rajin Shaikh — Developer Portfolio
+# Mahammad Rajin Shaikh — Developer Portfolio
 
-A responsive, single-page student developer portfolio with a dark terminal-inspired visual style, acid-yellow accents, bold typography and subtle motion.
+A reference-inspired, responsive student developer portfolio with bold outlined typography, a dark editorial visual system, cyan details, yellow highlights and CSS 3D motion.
 
-## Design direction
+## Pages
 
-- Near-black background with lime / acid-yellow highlights
-- Oversized editorial headings and monospaced technical labels
-- Terminal-inspired hero panel and decorative code motifs
-- Project cards, skill grid and learning timeline
-- Responsive navigation for desktop and mobile
-- Subtle scroll progress, project filtering and rotating role text
-- Reduced-motion support and visible keyboard focus states
+- **Home** — introduction, profile, about, learning journey, selected projects, stack and contact
+- **Projects** — project directory
+- **Project details** — individual case-study pages for each selected repository
+- **Blog** — an article-ready section; posts can be added later
+
+## Design and interaction
+
+- Dark background with warm yellow and cyan accents
+- Oversized outlined display typography and monospaced labels
+- 3D-style portrait stage with pointer tilt and orbit rings
+- Project cards with subtle perspective tilt
+- Responsive navigation and mobile layouts
+- Scroll progress indicator
+- Reduced-motion accessibility support
 
 ## Built with
 
@@ -19,7 +26,16 @@ A responsive, single-page student developer portfolio with a dark terminal-inspi
 - Vanilla JavaScript
 - Google Fonts: Space Grotesk and DM Mono
 
-This is a lightweight static website. It requires no backend, paid service, package installation or build step.
+No framework, package installation, backend or paid service is required. The site is static and compatible with GitHub Pages.
+
+## Selected projects
+
+- [GPA Calculator](https://github.com/instinct-coder1/gpa-calculator)
+- [Handwritten Digit Recognizer](https://github.com/instinct-coder1/handwritten-digit-recognizer)
+- [Space Adventure Game](https://github.com/instinct-coder1/Space-Adventure-Game-Interactive-Space-Shooter)
+- [OpenTutorAI](https://github.com/instinct-coder1/opentutorai)
+
+Descriptions on the site are intentionally concise. Check each repository for the authoritative source, implementation and setup instructions.
 
 ## Run locally
 
@@ -27,32 +43,16 @@ This is a lightweight static website. It requires no backend, paid service, pack
 2. Open the folder in VS Code.
 3. Open `index.html` in a browser, or use the Live Server extension.
 
-## Portfolio sections
+## Contact and profiles
 
-- Introduction and profile
-- About
-- Skills and learning areas
-- Selected projects
-- Learning journey
-- Contact
-
-## Project repositories
-
-- [GPA Calculator](https://github.com/instinct-coder1/gpa-calculator)
-- [Handwritten Digit Recognizer](https://github.com/instinct-coder1/handwritten-digit-recognizer)
-- [Student Portfolio](https://github.com/instinct-coder1/my-student-portfolio)
-
-## Contact
-
-- **Email:** bstmzk@proton.me
+- **Email:** muhammadzk312@gmail.com
 - **GitHub:** https://github.com/instinct-coder1
+- **LinkedIn:** https://www.linkedin.com/in/mahammadrajin-shaikh-185a37439/
 
-## Student information
+## Education
 
-- **Name:** Mahammad Rajin Shaikh
-- **Institution:** BossCoder School of Technology
 - **Programme:** B.Tech CSE (AI & ML)
+- **Institution:** BossCoder School of Technology
 
 ---
-
-Created as an individual student learning project.
+Built as a personal learning portfolio.

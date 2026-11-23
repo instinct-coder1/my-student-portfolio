@@ -1,74 +1,25 @@
-const body=document.body;
-const menuToggle=document.getElementById("menuToggle");
-const navLinks=document.getElementById("navLinks");
-const progressBar=document.getElementById("scrollProgress");
-const backToTop=document.getElementById("backToTop");
-const filterButtons=[...document.querySelectorAll(".filter-chip")];
-const projectCards=[...document.querySelectorAll(".project-card")];
-
-menuToggle.addEventListener("click",()=>{
-  const open=navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded",String(open));
-  menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation");
-});
-navLinks.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
-  navLinks.classList.remove("open");
-  menuToggle.setAttribute("aria-expanded","false");
-}));
-
-filterButtons.forEach(button=>button.addEventListener("click",()=>{
-  const filter=button.dataset.filter;
-  filterButtons.forEach(item=>{
-    const active=item===button;
-    item.classList.toggle("active",active);
-    item.setAttribute("aria-pressed",String(active));
-  });
-  projectCards.forEach(card=>{
-    const categories=(card.dataset.category||"").split(" ");
-    card.hidden=filter!=="all"&&!categories.includes(filter);
-  });
-}));
-
-const fields=["name","email","message"].map(id=>document.getElementById(id));
-const feedback=document.getElementById("formFeedback");
-fields.forEach(field=>field.addEventListener("input",()=>field.removeAttribute("aria-invalid")));
-document.getElementById("contactForm").addEventListener("submit",event=>{
-  event.preventDefault();
-  feedback.textContent="";
-  feedback.classList.remove("error");
-  const [name,email,message]=fields;
-  const fail=(field,text)=>{
-    field.setAttribute("aria-invalid","true");
-    feedback.textContent=text;
-    feedback.classList.add("error");
-    field.focus();
-  };
-  if(!name.value.trim())return fail(name,"Please enter your name.");
-  if(!email.value.trim())return fail(email,"Please enter your email address.");
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()))return fail(email,"Please enter a valid email address.");
-  if(!message.value.trim())return fail(message,"Please write a message.");
-  const subject=encodeURIComponent("Portfolio enquiry from "+name.value.trim());
-  const bodyText=encodeURIComponent("Name: "+name.value.trim()+"\nEmail: "+email.value.trim()+"\n\nMessage:\n"+message.value.trim());
-  window.location.href="mailto:bstmzk@proton.me?subject="+subject+"&body="+bodyText;
-  feedback.textContent="Your email app should open with a draft. Review it and press Send.";
-});
-
-function updateScroll(){
-  const max=document.documentElement.scrollHeight-window.innerHeight;
-  progressBar.style.width=(max>0?window.scrollY/max*100:0)+"%";
-  backToTop.classList.toggle("visible",window.scrollY>450);
+const menu=document.getElementById("menu");
+const nav=document.getElementById("navLinks");
+if(menu&&nav){menu.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");}));}
+const progress=document.getElementById("progress");
+const updateProgress=()=>{if(!progress)return;const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+"%";};
+addEventListener("scroll",updateProgress,{passive:true});updateProgress();
+const stage=document.getElementById("portraitStage");
+const portrait=stage?.querySelector(".portrait-frame");
+if(stage&&portrait&&matchMedia("(pointer:fine)").matches&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
+ stage.addEventListener("pointermove",e=>{const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;portrait.style.transform=`rotateY(${-8+x*18}deg) rotateX(${3-y*14}deg) translateZ(12px)`;});
+ stage.addEventListener("pointerleave",()=>portrait.style.transform="rotateY(-8deg) rotateX(3deg)");
 }
-window.addEventListener("scroll",updateScroll,{passive:true});
-updateScroll();
-backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
-document.getElementById("year").textContent=new Date().getFullYear();
-
-const roles=["CSE STUDENT","AI / ML EXPLORER","WEB DEVELOPER","PYTHON LEARNER"];
-const role=document.getElementById("roleRotator");
-if(role&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-  let index=0;
-  window.setInterval(()=>{
-    index=(index+1)%roles.length;
-    role.textContent=roles[index];
-  },2600);
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+ document.querySelectorAll(".tilt").forEach(card=>{card.addEventListener("pointermove",e=>{if(!matchMedia("(pointer:fine)").matches)return;const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(900px) rotateX(${-y*5}deg) rotateY(${x*5}deg) translateY(-3px)`;});card.addEventListener("pointerleave",()=>card.style.transform="");});
 }
+const data={
+ "gpa-calculator":{name:"GPA Calculator",type:"WEB APPLICATION",summary:"A retro-inspired CGPA / SGPA calculator built to make semester grade tracking easier.",description:"The calculator supports multiple semesters and subjects, credit-weighted grade calculations, grade-scale selection and a running cumulative GPA. It is built with plain HTML, CSS and JavaScript and runs directly in a browser.",stack:["HTML","CSS","JavaScript","Local Storage"],repo:"https://github.com/instinct-coder1/gpa-calculator",features:["Add multiple semesters and subjects","Calculate SGPA and overall CGPA using credits","Switch between 10-point and 4-point grading scales","Save data locally in the browser","Responsive layout and print-friendly results"]},
+ "handwritten-digit-recognizer":{name:"Handwritten Digit Recognizer",type:"MACHINE LEARNING",summary:"A machine-learning project exploring recognition of handwritten numerical digits.",description:"This project explores a classic computer-vision task: recognising handwritten digits from image data. The repository is the source of truth for its implementation and dependencies.",stack:["Handwriting Recognition","Image Processing"],repo:"https://github.com/instinct-coder1/handwritten-digit-recognizer",features:["Handwritten digit recognition project","Python-based repository","Explore the source code and setup instructions on GitHub"]},
+ "space-adventure":{name:"Space Adventure Game",type:"GAME DEVELOPMENT",summary:"An interactive space-shooter game with an arcade-inspired visual direction.",description:"A small game project centred on space adventure and shooter-style interaction. Visit the repository for the current implementation and instructions.",stack:["HTML","CSS","JavaScript"],repo:"https://github.com/instinct-coder1/Space-Adventure-Game-Interactive-Space-Shooter",features:["Space-shooter game concept","Interactive arcade-style experience","Source code available on GitHub"]},
+ "opentutorai":{name:"OpenTutorAI",type:"AI APPLICATION",summary:"An AI learning-assistant project exploring a conversational tutoring experience.",description:"OpenTutorAI is an evolving AI education project. Its repository includes the project source and development setup; visit GitHub for the latest implementation details.",stack:["React","TypeScript","AI Application"],repo:"https://github.com/instinct-coder1/opentutorai",features:["AI-focused learning assistant concept","Web application project","Development source available on GitHub"]}
+};
+const detail=document.getElementById("projectDetail");
+if(detail){const id=new URLSearchParams(location.search).get("id"),p=data[id];if(p){document.title=p.name+" — Rajin Shaikh";detail.innerHTML=`<div class="section-head"><span>PROJECT / ${p.type}</span><i></i><span>CASE STUDY</span></div><p class="overline">SELECTED WORK / 2026</p><h1 class="display-title">${p.name}</h1><p class="detail-lead">${p.summary}</p><div class="detail-panel"><div><span class="detail-label">OVERVIEW</span><p>${p.description}</p><span class="detail-label">TECHNOLOGIES</span><div class="tags">${p.stack.map(s=>`<span>${s}</span>`).join("")}</div></div><div><span class="detail-label">PROJECT NOTES</span><ul>${p.features.map(f=>`<li>${f}</li>`).join("")}</ul><a class="btn btn-yellow" href="${p.repo}" target="_blank" rel="noreferrer">VIEW GITHUB REPOSITORY ↗</a></div></div>`;}else{detail.innerHTML="<h1>Project not found</h1><p>Choose a project from the directory.</p>";}}
+const projectsList=document.getElementById("projectsList");
+if(projectsList){projectsList.innerHTML=Object.entries(data).map(([id,p],i)=>`<a class="directory-item" href="project.html?id=${id}"><span>0${i+1}</span><div><h2>${p.name}</h2><p>${p.summary}</p></div><b>↗</b></a>`).join("");}
