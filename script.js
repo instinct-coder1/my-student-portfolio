@@ -180,7 +180,7 @@
   // Motion system: GSAP if the CDN is available, IntersectionObserver otherwise.
   const revealHomeContent = () => {
     // Reveal all content if motion setup fails, not just the first matching element.
-    $(".reveal-up,.reveal-lines,.hero-line > span,.portrait-float,.orbit,.orbit-track,.orbit-chip").forEach(el => {
+    $$(".reveal-up,.reveal-lines,.hero-line > span,.portrait-float,.orbit,.orbit-track,.orbit-chip").forEach(el => {
       el.style.opacity = "1";
       el.style.transform = "none";
       el.style.clipPath = "none";
