@@ -1,32 +1,34 @@
-# Mahammad Rajin Shaikh — Developer Portfolio
+# Mahammad Rajin Shaikh — Creative Developer Portfolio
 
-A reference-inspired, responsive student developer portfolio with bold outlined typography, a dark editorial visual system, cyan details, yellow highlights and CSS 3D motion.
+An immersive, responsive personal portfolio for documenting learning, projects and experiments in computer science, AI and machine learning.
+
+## Experience
+
+- Cinematic intro loader and staggered hero entrance
+- Oversized editorial typography and animated role text
+- 3D portrait stage with orbital rings, floating UI chips and pointer response
+- Scroll-triggered reveals, animated counters and ambient background movement
+- Custom cursor and magnetic links on fine-pointer devices
+- Perspective project cards and animated visual previews
+- Responsive mobile navigation and layouts
+- Reduced-motion accessibility support
+- Project directory, individual project detail pages and journal page
+
+## Tech
+
+- HTML5, CSS3 and vanilla JavaScript
+- GSAP 3 with ScrollTrigger for motion choreography
+- Google Fonts: Space Grotesk, Manrope and DM Mono
+- No build step, framework, backend or paid service required
+
+GSAP is loaded from jsDelivr. If the CDN is unavailable, the site keeps its content and uses IntersectionObserver for basic reveal effects.
 
 ## Pages
 
-- **Home** — introduction, profile, about, learning journey, selected projects, stack and contact
-- **Projects** — project directory
-- **Project details** — individual case-study pages for each selected repository
-- **Blog** — an article-ready section; posts can be added later
-
-## Design and interaction
-
-- Dark background with warm yellow and cyan accents
-- Oversized outlined display typography and monospaced labels
-- 3D-style portrait stage with pointer tilt and orbit rings
-- Project cards with subtle perspective tilt
-- Responsive navigation and mobile layouts
-- Scroll progress indicator
-- Reduced-motion accessibility support
-
-## Built with
-
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Google Fonts: Space Grotesk and DM Mono
-
-No framework, package installation, backend or paid service is required. The site is static and compatible with GitHub Pages.
+- \`index.html\` — home, about, focus areas, selected projects, toolkit, learning journey and contact
+- \`projects.html\` — project archive
+- \`project.html?id=...\` — project case studies
+- \`blog.html\` — journal landing page, ready for posts
 
 ## Selected projects
 
@@ -35,24 +37,25 @@ No framework, package installation, backend or paid service is required. The sit
 - [Space Adventure Game](https://github.com/instinct-coder1/Space-Adventure-Game-Interactive-Space-Shooter)
 - [OpenTutorAI](https://github.com/instinct-coder1/opentutorai)
 
-Descriptions on the site are intentionally concise. Check each repository for the authoritative source, implementation and setup instructions.
+Project descriptions are intentionally concise. Each linked repository remains the authoritative source for its implementation and setup instructions.
 
 ## Run locally
 
-1. Clone this repository.
+1. Clone the repository.
 2. Open the folder in VS Code.
-3. Open `index.html` in a browser, or use the Live Server extension.
+3. Open \`index.html\` in a browser, or run it with the Live Server extension.
 
-## Contact and profiles
+## Contact
 
-- **Email:** muhammadzk312@gmail.com
-- **GitHub:** https://github.com/instinct-coder1
-- **LinkedIn:** https://www.linkedin.com/in/mahammadrajin-shaikh-185a37439/
+- Email: muhammadzk312@gmail.com
+- GitHub: https://github.com/instinct-coder1
+- LinkedIn: https://www.linkedin.com/in/mahammadrajin-shaikh-185a37439/
 
 ## Education
 
-- **Programme:** B.Tech CSE (AI & ML)
-- **Institution:** BossCoder School of Technology
+- B.Tech CSE (AI & ML)
+- BossCoder School of Technology
 
 ---
-Built as a personal learning portfolio.
+
+Built as a living record of curiosity and practice.
