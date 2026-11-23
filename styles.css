@@ -27,16 +27,23 @@
 
 /* Homepage visibility safety: keep essential hero content visible if motion scripts stall. */
 .intro-loader{display:none!important}
+.hero .hero-copy,
+.hero .hero-title,
+.hero .hero-layout,
+.hero .portrait-stage,
+.hero .hero-line,
 .hero .hero-line>span,
 .hero .eyebrow,
 .hero .hero-description,
 .hero .role-row,
 .hero .hero-actions,
 .hero .hero-social,
-.hero .portrait-float{
+.hero .portrait-float,
+.hero .orbit,
+.hero .orbit-track,
+.hero .orbit-chip{
   opacity:1!important;
   visibility:visible!important;
-  transform:none!important;
   clip-path:none!important;
 }
-.reveal-up,.reveal-lines{opacity:1!important;transform:none!important;clip-path:none!important}
+.reveal-up,.reveal-lines{opacity:1!important;visibility:visible!important;transform:none!important;clip-path:none!important}
