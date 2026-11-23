@@ -178,22 +178,9 @@
   }
 
   // Motion system: GSAP if the CDN is available, IntersectionObserver otherwise.
-  const revealHomeContent = () => {
-    // Reveal all content if motion setup fails, not just the first matching element.
-    $$(".reveal-up,.reveal-lines,.hero-line > span,.portrait-float,.orbit,.orbit-track,.orbit-chip").forEach(el => {
-      el.style.opacity = "1";
-      el.style.transform = "none";
-      el.style.clipPath = "none";
-      el.style.visibility = "visible";
-    });
-  };
-
   const initMotion = () => {
     if (reduceMotion) {
-      $(".reveal-up,.reveal-lines").forEach(el => { el.style.opacity = "1"; el.style.transform = "none"; el.style.clipPath = "none"; });
-      const loader = $("#introLoader");
-      if (loader) loader.remove();
-      revealHomeContent();
+      $$(".reveal-up,.reveal-lines").forEach(el => { el.style.opacity = "1"; el.style.transform = "none"; el.style.clipPath = "none"; });
       return;
     }
     if (window.gsap && window.ScrollTrigger) {
@@ -254,12 +241,4 @@
 
   if (document.readyState === "complete") initMotion();
   else window.addEventListener("load", initMotion, { once: true });
-
-  // Last-resort safety net: never leave the intro overlay or hero identity hidden
-  // if an animation/CDN fails or the browser interrupts the motion timeline.
-  window.setTimeout(() => {
-    const loader = $("#introLoader");
-    if (loader) loader.remove();
-    revealHomeContent();
-  }, 4000);
 })();
