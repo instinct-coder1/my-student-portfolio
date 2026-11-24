@@ -239,6 +239,17 @@
     }
   };
 
+  // Fail-safe: reveal content and dismiss the loader if motion initialisation fails.
+  window.setTimeout(() => {
+    $(".reveal-up,.reveal-lines,.hero-line > span").forEach(element => {
+      element.style.opacity = "1";
+      element.style.transform = "none";
+      element.style.clipPath = "none";
+    });
+    const loader = $("#introLoader");
+    if (loader) loader.remove();
+  }, 4500);
+
   if (document.readyState === "complete") initMotion();
   else window.addEventListener("load", initMotion, { once: true });
 })();
