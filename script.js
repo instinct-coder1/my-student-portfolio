@@ -241,8 +241,13 @@
 
   // Fail-safe: reveal content and dismiss the loader if motion initialisation fails.
   window.setTimeout(() => {
-    $(".reveal-up,.reveal-lines,.hero-line > span").forEach(element => {
+    // Stop unfinished animations, then reveal all content even if GSAP/CDNs fail.
+    if (window.gsap) {
+      window.gsap.killTweensOf(".reveal-up,.reveal-lines,.hero-line > span,.portrait-float");
+    }
+    $(".reveal-up,.reveal-lines,.hero-line > span,.portrait-float,.orbit,.orbit-track,.orbit-chip").forEach(element => {
       element.style.opacity = "1";
+      element.style.visibility = "visible";
       element.style.transform = "none";
       element.style.clipPath = "none";
     });
